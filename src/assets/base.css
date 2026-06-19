@@ -1,3 +1,5 @@
+/* WICHTIG: Angeblich braucht man diese Datei nicht mehr wenn man Tailwind CSS benutzt. Falls das so ist,
+einfach löschen, dann aber daran denken, dass ich die Font-Sachen in die main.css übernehmen muss. */
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
