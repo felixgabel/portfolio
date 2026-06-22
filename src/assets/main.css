@@ -3,7 +3,14 @@
 
 @layer base {
   body {
-    @apply min-h-screen antialiased bg-yellow-50/15;
+    @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 antialiased;
+    font-feature-settings:
+      'liga' 1,
+      /* fix for Chrome */ 'calt' 1,
+      'tnum' 1,
+      'zero' 1,
+      'ss01' 1,
+      'cv05' 1;
     text-rendering: optimizeLegibility;
   }
 }
