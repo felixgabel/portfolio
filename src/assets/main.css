@@ -1,14 +1,15 @@
 @import 'tailwindcss';
 @import './theme.css';
-@import './font_inter/inter.css';
+@import './fonts/inter.css';
 
 @layer base {
-  body {
+  html {
     @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 antialiased tabular-nums slashed-zero;
 
-    /* the defenitions of these stylesets and character-variants can be found in './font_inter/inter.css' */
+    /* the defenitions of these stylesets and character-variants can be found in './fonts/inter.css' */
     font-variant-alternates: styleset(open-digits) character-variant(lc-l-with-tail, single-story-a, uc-g-with-spur);
 
+    font-optical-sizing: auto;
     text-rendering: optimizeLegibility;
   }
 }
