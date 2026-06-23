@@ -4,14 +4,11 @@
 
 @layer base {
   body {
-    @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 antialiased;
-    font-feature-settings:
-      'liga' 1,
-      /* fix for Chrome */ 'calt' 1,
-      'tnum' 1,
-      'zero' 1,
-      'ss01' 1,
-      'cv05' 1;
+    @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 antialiased tabular-nums slashed-zero;
+
+    /* the defenitions of these stylesets and character-variants can be found in './font_inter/inter.css' */
+    font-variant-alternates: styleset(open-digits) character-variant(lc-l-with-tail, single-story-a, uc-g-with-spur);
+
     text-rendering: optimizeLegibility;
   }
 }
