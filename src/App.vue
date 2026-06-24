@@ -8,13 +8,14 @@ import BodyContainer from './components/body-container.vue'
 
 // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
 import { usePreferredDark } from '@vueuse/core'
+import DotGridRepelCanvas from './components/DotGridRepelCanvas.vue'
 const isPreferredDark = usePreferredDark()
 </script>
 
 <template>
   <!-- <BranchingCanvas></BranchingCanvas> -->
   <!-- <DottedGridCanvas></DottedGridCanvas> -->
-  <dot-wave
+  <!-- <dot-wave
     class="flex h-dvh!"
     :dot-color="isPreferredDark ? '#333333' : '#cccccc'"
     background-color="transparent"
@@ -24,25 +25,26 @@ const isPreferredDark = usePreferredDark()
     dot-max-opacity="1"
     random-factor="0.02"
     dot-stretch="false"
-  >
-    <!-- <GradientBelowCursor></GradientBelowCursor> -->
-    <BodyContainer class="overflow-auto">
-      <!-- overflow-auto is only necesarry when I use dot-wave -->
-      <header>
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  > -->
+  <!-- <GradientBelowCursor></GradientBelowCursor> -->
+  <DotGridRepelCanvas></DotGridRepelCanvas>
+  <BodyContainer class="overflow-auto">
+    <!-- overflow-auto is only necesarry when I use dot-wave -->
+    <header>
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-        <div class="wrapper">
-          <HelloWorld msg="You did it!" />
+      <div class="wrapper">
+        <HelloWorld msg="You did it!" />
 
-          <nav>
-            <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/about">About</RouterLink>
-          </nav>
-        </div>
-      </header>
-      <RouterView />
-    </BodyContainer>
-  </dot-wave>
+        <nav>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+      </div>
+    </header>
+    <RouterView />
+  </BodyContainer>
+  <!-- </dot-wave> -->
 </template>
 
 <style scoped>
