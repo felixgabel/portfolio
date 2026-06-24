@@ -2,30 +2,47 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import BodyContainer from './components/body-container.vue'
-import GradientBelowCursor from './components/gradient-below-cursor.vue'
+// import GradientBelowCursor from './components/gradient-below-cursor.vue'
 // import BranchingCanvas from './components/branching-canvas.vue'
-import DottedGridCanvas from './components/DottedGridCanvas.vue'
+// import DottedGridCanvas from './components/DottedGridCanvas.vue'
+
+// if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
+import { usePreferredDark } from '@vueuse/core'
+const isPreferredDark = usePreferredDark()
 </script>
 
 <template>
   <!-- <BranchingCanvas></BranchingCanvas> -->
-  <DottedGridCanvas></DottedGridCanvas>
-  <GradientBelowCursor></GradientBelowCursor>
-  <BodyContainer>
-    <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <!-- <DottedGridCanvas></DottedGridCanvas> -->
+  <dot-wave
+    class="flex h-dvh!"
+    :dot-color="isPreferredDark ? '#333333' : '#cccccc'"
+    background-color="transparent"
+    dot-min-size="1.4"
+    dot-max-size="1.4"
+    dot-min-opacity="0.1"
+    dot-max-opacity="1"
+    random-factor="0.02"
+    dot-stretch="false"
+  >
+    <!-- <GradientBelowCursor></GradientBelowCursor> -->
+    <BodyContainer class="overflow-auto">
+      <!-- overflow-auto is only necesarry when I use dot-wave -->
+      <header>
+        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
+        <div class="wrapper">
+          <HelloWorld msg="You did it!" />
 
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-      </div>
-    </header>
-    <RouterView />
-  </BodyContainer>
+          <nav>
+            <RouterLink to="/">Home</RouterLink>
+            <RouterLink to="/about">About</RouterLink>
+          </nav>
+        </div>
+      </header>
+      <RouterView />
+    </BodyContainer>
+  </dot-wave>
 </template>
 
 <style scoped>
