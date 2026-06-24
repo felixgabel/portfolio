@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import CustomContainer from './atomics/custom-container.vue'
-import GradientBelowCursor from './atomics/gradient-below-cursor.vue'
+import BodyContainer from './components/body-container.vue'
+import GradientBelowCursor from './components/gradient-below-cursor.vue'
 </script>
 
 <template>
   <GradientBelowCursor></GradientBelowCursor>
-  <CustomContainer>
+  <BodyContainer>
     <header>
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -21,7 +21,7 @@ import GradientBelowCursor from './atomics/gradient-below-cursor.vue'
       </div>
     </header>
     <RouterView />
-  </CustomContainer>
+  </BodyContainer>
 </template>
 
 <style scoped>
