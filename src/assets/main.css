@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 slashed-zero tabular-nums antialiased;
+    @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 slashed-zero tabular-nums antialiased dark:bg-slate-900;
 
     /* the defenitions of these stylesets and character-variants can be found in './fonts/inter.css' */
     font-variant-alternates: styleset(open-digits)
