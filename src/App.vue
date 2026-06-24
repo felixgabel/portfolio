@@ -3,9 +3,11 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import BodyContainer from './components/body-container.vue'
 import GradientBelowCursor from './components/gradient-below-cursor.vue'
+import BranchingCanvas from './components/branching-canvas.vue'
 </script>
 
 <template>
+  <BranchingCanvas></BranchingCanvas>
   <GradientBelowCursor></GradientBelowCursor>
   <BodyContainer>
     <header>
