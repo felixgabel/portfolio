@@ -23,14 +23,14 @@ interface GridConfig {
 }
 
 const config: GridConfig = {
-  spacing: 36,
-  dotRadius: 2,
-  maxDotRadius: 4,
-  repelRadius: 140,
-  repelStrength: 28,
-  springStrength: 0.08,
-  damping: 0.82,
-  dotColor: 'rgba(0,0,0,0.1)',
+  spacing: 18,
+  dotRadius: 1,
+  maxDotRadius: 1.7,
+  repelRadius: 250,
+  repelStrength: -5,
+  springStrength: 0.4,
+  damping: 0.3,
+  dotColor: '#dddddd',
 }
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
@@ -150,5 +150,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <canvas ref="canvasRef" class="fixed inset-0 -z-10 block h-screen w-screen" />
+  <canvas ref="canvasRef" class="fixed inset-0 -z-10 block h-screen w-screen dark:invert" />
 </template>

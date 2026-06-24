@@ -2,9 +2,9 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import BodyContainer from './components/body-container.vue'
-// import GradientBelowCursor from './components/gradient-below-cursor.vue'
-// import BranchingCanvas from './components/branching-canvas.vue'
-// import DottedGridCanvas from './components/DottedGridCanvas.vue'
+import GradientBelowCursor from './components/gradient-below-cursor.vue'
+import BranchingCanvas from './components/branching-canvas.vue'
+import DottedGridCanvas from './components/DottedGridCanvas.vue'
 
 // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
 import { usePreferredDark } from '@vueuse/core'
@@ -17,6 +17,7 @@ const isPreferredDark = usePreferredDark()
   <!-- <DottedGridCanvas></DottedGridCanvas> -->
   <!-- <dot-wave
     class="flex h-dvh!"
+    num-dots="800"
     :dot-color="isPreferredDark ? '#333333' : '#cccccc'"
     background-color="transparent"
     dot-min-size="1.4"
@@ -27,7 +28,7 @@ const isPreferredDark = usePreferredDark()
     dot-stretch="false"
   > -->
   <!-- <GradientBelowCursor></GradientBelowCursor> -->
-  <DotGridRepelCanvas></DotGridRepelCanvas>
+  <!-- <DotGridRepelCanvas></DotGridRepelCanvas> -->
   <BodyContainer class="overflow-auto">
     <!-- overflow-auto is only necesarry when I use dot-wave -->
     <header>
