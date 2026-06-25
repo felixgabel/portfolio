@@ -1,11 +1,37 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import CustomContainer from './atomics/custom-container.vue'
+import BodyContainer from './components/body-container.vue'
+
+// import GradientBelowCursor from './components/gradient-below-cursor.vue'
+// import BranchingCanvas from './components/branching-canvas.vue'
+// import DottedGridCanvas from './components/DottedGridCanvas.vue'
+// import DotGridRepelCanvas from './components/DotGridRepelCanvas.vue'
+
+// // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
+// import { usePreferredDark } from '@vueuse/core'
+// const isPreferredDark = usePreferredDark()
 </script>
 
 <template>
-  <CustomContainer>
+  <!-- <GradientBelowCursor></GradientBelowCursor> -->
+  <!-- <BranchingCanvas></BranchingCanvas> -->
+  <!-- <DottedGridCanvas></DottedGridCanvas> -->
+  <!-- <DotGridRepelCanvas></DotGridRepelCanvas> -->
+  <!-- <dot-wave
+    class="flex h-dvh!"
+    num-dots="800"
+    :dot-color="isPreferredDark ? '#333333' : '#cccccc'"
+    background-color="transparent"
+    dot-min-size="1.4"
+    dot-max-size="1.4"
+    dot-min-opacity="0.1"
+    dot-max-opacity="1"
+    random-factor="0.02"
+    dot-stretch="false"
+  > -->
+  <BodyContainer class="overflow-auto">
+    <!-- overflow-auto is only necesarry when I use dot-wave -->
     <header>
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -19,7 +45,8 @@ import CustomContainer from './atomics/custom-container.vue'
       </div>
     </header>
     <RouterView />
-  </CustomContainer>
+  </BodyContainer>
+  <!-- </dot-wave> -->
 </template>
 
 <style scoped>
