@@ -1,21 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const mouseX = ref(0)
-const mouseY = ref(0)
-
-const updateMousePosition = (event: MouseEvent) => {
-  mouseX.value = event.clientX
-  mouseY.value = event.clientY
-}
-
-onMounted(() => {
-  window.addEventListener('mousemove', updateMousePosition)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('mousemove', updateMousePosition)
-})
+import { useMouse } from '@vueuse/core'
+const { x: mouseX, y: mouseY } = useMouse()
 </script>
 
 <template>
