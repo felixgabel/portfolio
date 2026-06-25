@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import BodyContainer from './components/body-container.vue'
+import BodyContainer from './components/BodyContainer.vue'
 
-// import GradientBelowCursor from './components/gradient-below-cursor.vue'
-// import BranchingCanvas from './components/branching-canvas.vue'
-// import DottedGridCanvas from './components/DottedGridCanvas.vue'
-// import DotGridRepelCanvas from './components/DotGridRepelCanvas.vue'
+// import CursorGradient from './components/CursorGradient.vue'
+// import BranchingBackground from './components/background-canvas/BranchingBackground.vue'
+// import DottedBackground from './components/background-canvas/DottedBackground.vue'
+// import DottedGravityBackground from './components/background-canvas/RepulsiveDottedBackground.vue'
 
 // // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
 // import { usePreferredDark } from '@vueuse/core'
@@ -14,10 +13,10 @@ import BodyContainer from './components/body-container.vue'
 </script>
 
 <template>
-  <!-- <GradientBelowCursor></GradientBelowCursor> -->
-  <!-- <BranchingCanvas></BranchingCanvas> -->
-  <!-- <DottedGridCanvas></DottedGridCanvas> -->
-  <!-- <DotGridRepelCanvas></DotGridRepelCanvas> -->
+  <!-- <CursorGradient></CursorGradient> -->
+  <!-- <BranchingBackground></BranchingBackground> -->
+  <!-- <DottedBackground></DottedBackground> -->
+  <!-- <DottedGravityBackground></DottedGravityBackground> -->
   <!-- <dot-wave
     class="flex h-dvh!"
     num-dots="800"
