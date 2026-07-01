@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import BodyContainer from './components/body-container.vue'
+import BodyContainer from './components/BodyContainer.vue'
 
-// import GradientBelowCursor from './components/gradient-below-cursor.vue'
-// import BranchingCanvas from './components/branching-canvas.vue'
-// import DottedGridCanvas from './components/DottedGridCanvas.vue'
-// import DotGridRepelCanvas from './components/DotGridRepelCanvas.vue'
+// import CursorGradient from './components/CursorGradient.vue'
+// import BranchingBackground from './components/background-canvas/BranchingBackground.vue'
+// import DottedBackground from './components/background-canvas/DottedBackground.vue'
+// import DottedGravityBackground from './components/background-canvas/RepulsiveDottedBackground.vue'
 
 // // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
 // import { usePreferredDark } from '@vueuse/core'
@@ -14,10 +13,10 @@ import BodyContainer from './components/body-container.vue'
 </script>
 
 <template>
-  <!-- <GradientBelowCursor></GradientBelowCursor> -->
-  <!-- <BranchingCanvas></BranchingCanvas> -->
-  <!-- <DottedGridCanvas></DottedGridCanvas> -->
-  <!-- <DotGridRepelCanvas></DotGridRepelCanvas> -->
+  <!-- <CursorGradient></CursorGradient> -->
+  <!-- <BranchingBackground></BranchingBackground> -->
+  <!-- <DottedBackground></DottedBackground> -->
+  <!-- <DottedGravityBackground></DottedGravityBackground> -->
   <!-- <dot-wave
     class="flex h-dvh!"
     num-dots="800"
@@ -30,85 +29,22 @@ import BodyContainer from './components/body-container.vue'
     random-factor="0.02"
     dot-stretch="false"
   > -->
-  <BodyContainer class="overflow-auto">
-    <!-- overflow-auto is only necesarry when I use dot-wave -->
+
+  <div class="lg:flex lg:justify-between lg:gap-4">
     <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-      </div>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
     </header>
-    <RouterView />
-  </BodyContainer>
+
+    <main>
+      <BodyContainer class="overflow-auto">
+        <!-- overflow-auto is only necesarry when I use dot-wave -->
+        <RouterView />
+      </BodyContainer>
+    </main>
+  </div>
+
   <!-- </dot-wave> -->
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
