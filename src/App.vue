@@ -30,19 +30,21 @@ import BodyContainer from './components/BodyContainer.vue'
     dot-stretch="false"
   > -->
 
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-  </header>
+  <div class="lg:flex lg:justify-between lg:gap-4">
+    <header>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </header>
 
-  <main>
-    <BodyContainer class="overflow-auto">
-      <!-- overflow-auto is only necesarry when I use dot-wave -->
-      <RouterView />
-    </BodyContainer>
-  </main>
+    <main>
+      <BodyContainer class="overflow-auto">
+        <!-- overflow-auto is only necesarry when I use dot-wave -->
+        <RouterView />
+      </BodyContainer>
+    </main>
+  </div>
 
   <!-- </dot-wave> -->
 </template>
