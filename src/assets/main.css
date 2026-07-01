@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply min-h-dvh bg-yellow-50/15 font-sans text-[17px]/7 slashed-zero tabular-nums antialiased dark:bg-slate-900;
+    @apply scroll-smooth font-sans text-[17px]/7 slashed-zero tabular-nums;
 
     /* the defenitions of these stylesets and character-variants can be found in './fonts/inter.css' */
     font-variant-alternates: styleset(open-digits)
@@ -12,5 +12,8 @@
 
     font-optical-sizing: auto;
     text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply min-h-dvh bg-yellow-50/15 leading-relaxed antialiased dark:bg-slate-900;
   }
 }
