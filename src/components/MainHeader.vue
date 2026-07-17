@@ -52,12 +52,14 @@ const socialLinks: SocialLink[] = [
   >
     <!-- HEADINGS -->
     <div>
-      <h1 class="text-4xl font-bold tracking-tight text-mist-800 sm:text-5xl dark:text-slate-200">
+      <h1
+        class="text-4xl font-bold tracking-tight text-neutral-800 sm:text-5xl dark:text-neutral-200"
+      >
         <!-- <a href="/">Felix Gabel</a> -->
         <RouterLink to="/">Felix Gabel</RouterLink>
       </h1>
       <h2
-        class="mt-3 text-lg font-medium tracking-tight text-mist-800 sm:text-xl dark:text-slate-200"
+        class="mt-3 text-lg font-medium tracking-tight text-neutral-800 sm:text-xl dark:text-neutral-200"
       >
         Frontend Entwickler
       </h2>
@@ -79,10 +81,10 @@ const socialLinks: SocialLink[] = [
               "
               class="group flex items-center py-3"
               ><span
-                class="mr-4 h-px w-8 bg-mist-500 transition-all group-[&:hover,&:focus-visible,&[data-active]]:w-16 group-[&:hover,&:focus-visible,&[data-active]]:bg-mist-800 motion-reduce:transition-none dark:bg-slate-600 dark:group-[&:hover,&:focus-visible,&[data-active]]:bg-slate-200"
+                class="mr-4 h-px w-8 bg-neutral-500 transition-all group-[&:hover,&:focus-visible,&[data-active]]:w-16 group-[&:hover,&:focus-visible,&[data-active]]:bg-neutral-800 motion-reduce:transition-none dark:group-[&:hover,&:focus-visible,&[data-active]]:bg-neutral-200"
               ></span
               ><span
-                class="text-xs font-bold tracking-widest text-mist-500 uppercase group-[&:hover,&:focus-visible,&[data-active]]:text-mist-800 dark:text-slate-600 dark:group-[&:hover,&:focus-visible,&[data-active]]:text-slate-200"
+                class="text-xs font-bold tracking-widest text-neutral-500 uppercase group-[&:hover,&:focus-visible,&[data-active]]:text-neutral-800 dark:group-[&:hover,&:focus-visible,&[data-active]]:text-neutral-200"
                 >{{ sectionLink.label }}</span
               >
             </RouterLink>
@@ -95,7 +97,7 @@ const socialLinks: SocialLink[] = [
     <ul class="mt-8 ml-1 flex items-center" aria-label="Soziale Medien">
       <li v-for="socialLink in socialLinks" :key="socialLink.label" class="mr-5 shrink-0 text-xs">
         <a
-          class="block text-mist-500 [:hover,&:focus-visible]:text-mist-800"
+          class="block [:hover,&:focus-visible]:text-neutral-900 dark:[:hover,&:focus-visible]:text-neutral-100"
           :href="socialLink.href"
           target="_blank"
           rel="noreferrer noopener"
