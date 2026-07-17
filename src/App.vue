@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import BodyContainer from './components/BodyContainer.vue'
+import MainHeader from './components/MainHeader.vue'
 
 // import CursorGradient from './components/CursorGradient.vue'
 // import BranchingBackground from './components/background-canvas/BranchingBackground.vue'
-// import DottedBackground from './components/background-canvas/DottedBackground.vue'
+import DottedBackground from './components/background-canvas/DottedBackground.vue'
 // import DottedGravityBackground from './components/background-canvas/RepulsiveDottedBackground.vue'
 
 // // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
@@ -15,7 +16,7 @@ import BodyContainer from './components/BodyContainer.vue'
 <template>
   <!-- <CursorGradient></CursorGradient> -->
   <!-- <BranchingBackground></BranchingBackground> -->
-  <!-- <DottedBackground></DottedBackground> -->
+  <DottedBackground></DottedBackground>
   <!-- <DottedGravityBackground></DottedGravityBackground> -->
   <!-- <dot-wave
     class="flex h-dvh!"
@@ -30,21 +31,16 @@ import BodyContainer from './components/BodyContainer.vue'
     dot-stretch="false"
   > -->
 
-  <div class="lg:flex lg:justify-between lg:gap-4">
-    <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </header>
+  <BodyContainer>
+    <!-- overflow-auto on BodyContainer is only necessary when I use dot-wave -->
+    <div class="lg:flex lg:justify-between lg:gap-4">
+      <MainHeader></MainHeader>
 
-    <main>
-      <BodyContainer class="overflow-auto">
-        <!-- overflow-auto is only necesarry when I use dot-wave -->
+      <main class="pt-24 lg:w-[52%] lg:py-24">
         <RouterView />
-      </BodyContainer>
-    </main>
-  </div>
+      </main>
+    </div>
+  </BodyContainer>
 
   <!-- </dot-wave> -->
 </template>

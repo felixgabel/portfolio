@@ -14,6 +14,6 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply min-h-dvh bg-yellow-50/15 leading-relaxed antialiased dark:bg-slate-900;
+    @apply min-h-dvh bg-yellow-50/15 leading-relaxed text-mist-500 antialiased selection:bg-yellow-900 selection:text-yellow-100 dark:bg-slate-900 dark:text-slate-400;
   }
 }
