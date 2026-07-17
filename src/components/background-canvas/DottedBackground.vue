@@ -50,7 +50,7 @@ function addPoints({
       particle.anchorY = 0.5
       particleContainer.addParticle(particle)
 
-      const opacity = Math.random() * 0.5 + 0.5
+      const opacity = Math.random() * 0.5 + 0.4
       points.push({ x, y, opacity, particle })
     }
   }
