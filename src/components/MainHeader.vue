@@ -48,7 +48,7 @@ const socialLinks: SocialLink[] = [
 
 <template>
   <header
-    class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24"
+    class="lg:sticky lg:top-0 lg:flex lg:h-dvh lg:w-[48%] lg:flex-col lg:justify-between lg:py-24"
   >
     <!-- HEADINGS -->
     <div>
@@ -61,12 +61,12 @@ const socialLinks: SocialLink[] = [
       >
         Frontend Entwickler
       </h2>
-      <p class="mt-4 max-w-xs leading-normal">
+      <p class="mt-4 max-w-sm leading-normal">
         Entwicklung von modernen Web-Anwendungen mit Fokus auf Exzellenz und Schönheit.
       </p>
 
       <!-- NAVIGATION -->
-      <nav class="hidden lg:block" aria-label="Navigationslinks zu Webseitenabschnitten">
+      <nav class="max-lg:hidden" aria-label="Navigationslinks zu Webseitenabschnitten">
         <ul class="mt-16 w-max">
           <li v-for="(sectionLink, indexOfSectionLink) in sectionLinks" :key="sectionLink.label">
             <RouterLink
@@ -92,14 +92,14 @@ const socialLinks: SocialLink[] = [
     </div>
 
     <!-- LINKS -->
-    <ul class="mt-8 ml-1 flex items-center" aria-label="Social media">
+    <ul class="mt-8 ml-1 flex items-center" aria-label="Soziale Medien">
       <li v-for="socialLink in socialLinks" :key="socialLink.label" class="mr-5 shrink-0 text-xs">
         <a
           class="block"
           :href="socialLink.href"
           target="_blank"
           rel="noreferrer noopener"
-          :aria-label="`${socialLink.label} (opens in a new tab)`"
+          :aria-label="`${socialLink.label} (öffnet in neuem Tab)`"
           :title="socialLink.label"
           ><span class="sr-only">{{ socialLink.label }}</span
           ><svg
