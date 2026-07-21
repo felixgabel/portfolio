@@ -6,6 +6,7 @@ import MainHeader from './components/MainHeader.vue'
 // import CursorGradient from './components/CursorGradient.vue'
 // import BranchingBackground from './components/background-canvas/BranchingBackground.vue'
 import DottedBackground from './components/background-canvas/DottedBackground.vue'
+import BackdropFilter from './components/BackdropFilter.vue'
 // import DottedGravityBackground from './components/background-canvas/RepulsiveDottedBackground.vue'
 
 // // if I want to use a toggle, use useDark instead. It pairs nicely with tailwind as well.
@@ -17,6 +18,7 @@ import DottedBackground from './components/background-canvas/DottedBackground.vu
   <!-- <CursorGradient></CursorGradient> -->
   <!-- <BranchingBackground></BranchingBackground> -->
   <DottedBackground></DottedBackground>
+  <BackdropFilter></BackdropFilter>
   <!-- <DottedGravityBackground></DottedGravityBackground> -->
   <!-- <dot-wave
     class="flex h-dvh!"
