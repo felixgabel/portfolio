@@ -3,7 +3,6 @@ import { RouterView } from 'vue-router'
 import BodyContainer from './components/BodyContainer.vue'
 import MainHeader from './components/MainHeader.vue'
 
-import CursorGradient from './components/CursorGradient.vue'
 import BranchingBackground from './components/background-canvas/BranchingBackground.vue'
 import DottedBackground from './components/background-canvas/DottedBackground.vue'
 import BackdropFilter from './components/background-canvas/BackdropFilter.vue'
@@ -11,7 +10,6 @@ import DottedGravityBackground from './components/background-canvas/DottedGravit
 </script>
 
 <template>
-  <!-- <CursorGradient></CursorGradient> -->
   <!-- <BranchingBackground></BranchingBackground> -->
   <!-- <DottedBackground></DottedBackground> -->
   <!-- <BackdropFilter></BackdropFilter> -->
@@ -26,5 +24,4 @@ import DottedGravityBackground from './components/background-canvas/DottedGravit
       </main>
     </div>
   </BodyContainer>
-
 </template>
