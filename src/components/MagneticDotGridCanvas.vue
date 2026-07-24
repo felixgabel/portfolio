@@ -12,25 +12,25 @@ interface Dot {
 }
 
 interface GridConfig {
+  dotColor: string
   spacing: number // distance between dots, in px
   dotRadius: number // resting radius of each dot
-  maxDotRadius: number // radius a dot grows to when pushed (purely visual)
-  repelRadius: number // how far from the cursor dots start reacting
-  repelStrength: number // max distance a dot gets pushed away, in px
+  influencedDotRadius: number // radius a dot grows to when pushed (purely visual)
+  magneticInfluenceRadius: number // how far from the cursor dots start reacting
+  magneticInfluenceStrength: number // max distance a dot gets pushed away, in px
   springStrength: number // how strongly a dot eases back home (0–1, higher = snappier)
   damping: number // velocity damping per frame (lower = more "floaty")
-  dotColor: string
 }
 
 const config: GridConfig = {
+  dotColor: '#00000033',
   spacing: 18,
   dotRadius: 1,
-  maxDotRadius: 1.7,
-  repelRadius: 250,
-  repelStrength: -5,
+  influencedDotRadius: 1.2,
+  magneticInfluenceRadius: 500,
+  magneticInfluenceStrength: -5,
   springStrength: 0.4,
   damping: 0.3,
-  dotColor: '#dddddd',
 }
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
@@ -91,8 +91,8 @@ function update(): void {
     const dy = d.y - mouse.y
     const dist = Math.sqrt(dx * dx + dy * dy)
 
-    if (dist < config.repelRadius) {
-      const force = (1 - dist / config.repelRadius) * config.repelStrength
+    if (dist < config.magneticInfluenceRadius) {
+      const force = (1 - dist / config.magneticInfluenceRadius) * config.magneticInfluenceStrength
       const angle = Math.atan2(dy, dx)
       const targetX = d.x + Math.cos(angle) * force * 0.2
       const targetY = d.y + Math.sin(angle) * force * 0.2
@@ -126,8 +126,8 @@ function draw(): void {
     const dx = d.x - mouse.x
     const dy = d.y - mouse.y
     const dist = Math.sqrt(dx * dx + dy * dy)
-    const t = Math.max(0, 1 - dist / config.repelRadius)
-    const r = config.dotRadius + (config.maxDotRadius - config.dotRadius) * t
+    const t = Math.max(0, 1 - dist / config.magneticInfluenceRadius)
+    const r = config.dotRadius + (config.influencedDotRadius - config.dotRadius) * t
 
     ctx.beginPath()
     ctx.arc(d.x, d.y, r, 0, Math.PI * 2)
@@ -150,5 +150,8 @@ onMounted(() => {
 </script>
 
 <template>
+  <div
+    class="pointer-events-none fixed inset-0 -z-1 backdrop-blur-[0.6px] dark:backdrop-blur-[1.2px] dark:backdrop-brightness-300"
+  ></div>
   <canvas ref="canvasRef" class="fixed inset-0 -z-10 block h-screen w-screen dark:invert" />
 </template>

@@ -2,12 +2,11 @@
 import { RouterView } from 'vue-router'
 import BodyContainer from './components/BodyContainer.vue'
 import MainHeader from './components/MainHeader.vue'
-
-import DottedGravityBackground from './components/background-canvas/DottedGravityBackground.vue'
+import MagneticDotGridCanvas from './components/MagneticDotGridCanvas.vue'
 </script>
 
 <template>
-  <DottedGravityBackground></DottedGravityBackground>
+  <MagneticDotGridCanvas></MagneticDotGridCanvas>
 
   <BodyContainer>
     <div class="lg:flex lg:justify-between lg:gap-4">
