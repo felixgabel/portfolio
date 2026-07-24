@@ -3,13 +3,10 @@ import { RouterView } from 'vue-router'
 import BodyContainer from './components/BodyContainer.vue'
 import MainHeader from './components/MainHeader.vue'
 
-import BackdropFilter from './components/background-canvas/BackdropFilter.vue'
 import DottedGravityBackground from './components/background-canvas/DottedGravityBackground.vue'
 </script>
 
 <template>
-  <!-- <DottedBackground></DottedBackground> -->
-  <!-- <BackdropFilter></BackdropFilter> -->
   <DottedGravityBackground></DottedGravityBackground>
 
   <BodyContainer>
