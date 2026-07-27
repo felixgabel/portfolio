@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import { RouterView } from 'vue-router'
 import BodyContainer from './components/BodyContainer.vue'
 import MainHeader from './components/MainHeader.vue'
 import MagneticDotGridCanvas from './components/MagneticDotGridCanvas.vue'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const showMagneticGrid = breakpoints.greaterOrEqual('lg')
 </script>
 
 <template>
-  <MagneticDotGridCanvas></MagneticDotGridCanvas>
+  <MagneticDotGridCanvas v-if="showMagneticGrid"></MagneticDotGridCanvas>
 
   <BodyContainer>
     <div class="lg:flex lg:justify-between lg:gap-4">
