@@ -23,11 +23,11 @@ interface GridConfig {
 }
 
 const config: GridConfig = {
-  dotColor: '#00000033',
+  dotColor: '#00000044',
   spacing: 18,
-  dotRadius: 1,
-  influencedDotRadius: 1.2,
-  magneticInfluenceRadius: 500,
+  dotRadius: 0.1,
+  influencedDotRadius: 1.1,
+  magneticInfluenceRadius: 777,
   magneticInfluenceStrength: -5,
   springStrength: 0.4,
   damping: 0.3,
@@ -151,7 +151,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="pointer-events-none fixed inset-0 -z-1 backdrop-blur-[0.6px] dark:backdrop-blur-[1.2px] dark:backdrop-brightness-300"
+    class="pointer-events-none fixed inset-0 -z-1 backdrop-blur-[0.4px] dark:backdrop-blur-[0.8px] dark:backdrop-brightness-175"
   ></div>
   <canvas ref="canvasRef" class="fixed inset-0 -z-10 block h-screen w-screen dark:invert" />
 </template>
