@@ -103,11 +103,11 @@ const socialLinks: SocialLink[] = [
           ><span class="relative block size-7">
             <component
               :is="socialLink.outlineIcon"
-              class="absolute transition-opacity duration-250 group-[:is(:hover,:focus-visible)]:opacity-0 motion-reduce:transition-none"
+              class="absolute transition-opacity duration-200 group-[:is(:hover,:focus-visible)]:opacity-0 motion-reduce:transition-none"
             />
             <component
               :is="socialLink.filledIcon"
-              class="absolute opacity-0 transition-opacity duration-250 group-[:is(:hover,:focus-visible)]:opacity-100 motion-reduce:transition-none"
+              class="absolute opacity-0 transition-opacity duration-200 group-[:is(:hover,:focus-visible)]:opacity-100 motion-reduce:transition-none"
             />
           </span>
         </a>
