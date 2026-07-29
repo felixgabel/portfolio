@@ -33,6 +33,23 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 96, // equals tailwind class scroll-mt-24 (24 * 4 = 96)
+      }
+    }
+
+    return {
+      top: 0,
+      behavior: 'smooth',
+    }
+  },
 })
 
 export default router
