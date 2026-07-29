@@ -10,13 +10,13 @@ const route = useRoute()
 
 type SectionLink = {
   label: string
-  routeName: string
+  hash: string
 }
 
 const sectionLinks: SectionLink[] = [
-  { label: 'Über mich', routeName: 'ueber_mich' },
-  { label: 'Erfahrung', routeName: 'erfahrung' },
-  { label: 'Projekte', routeName: 'projekte' },
+  { label: 'Über mich', hash: '#ueber-mich' },
+  { label: 'Erfahrung', hash: '#erfahrung' },
+  { label: 'Lebenslauf', hash: '#lebenslauf' },
 ]
 
 type SocialLink = {
@@ -68,10 +68,9 @@ const socialLinks: SocialLink[] = [
         <ul class="mt-16 w-max">
           <li v-for="(sectionLink, indexOfSectionLink) in sectionLinks" :key="sectionLink.label">
             <RouterLink
-              :to="{ name: sectionLink.routeName }"
+              :to="{ name: 'home', hash: sectionLink.hash }"
               :data-active="
-                route.name === sectionLink.routeName ||
-                (indexOfSectionLink === 0 && route.name === 'home')
+                route.hash === sectionLink.hash || (!route.hash && indexOfSectionLink === 0)
                   ? true
                   : null
               "
