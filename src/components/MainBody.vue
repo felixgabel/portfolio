@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, watch, useTemplateRef } from 'vue'
-import { useIntersectionObserver, useScroll } from '@vueuse/core'
+import {
+  breakpointsTailwind,
+  useBreakpoints,
+  useIntersectionObserver,
+  useScroll,
+} from '@vueuse/core'
 import { useRoute, useRouter } from 'vue-router'
 import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
 
@@ -8,10 +13,11 @@ const route = useRoute()
 const router = useRouter()
 const programmaticScrollStore = useProgrammaticScrollStore()
 
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
 const ueberMichSection = useTemplateRef<HTMLElement>('ueberMichSection')
 const erfahrungSection = useTemplateRef<HTMLElement>('erfahrungSection')
 const lebenslaufSection = useTemplateRef<HTMLElement>('lebenslaufSection')
-
 const allSectionElements = computed(() =>
   [ueberMichSection.value, erfahrungSection.value, lebenslaufSection.value].filter(
     (sectionElement): sectionElement is HTMLElement => sectionElement !== null,
@@ -25,6 +31,8 @@ useIntersectionObserver(
   allSectionElements,
   (intersectionEntriesOfSectionElementsThatCrossedTheThreshold) => {
     // usually called with only one entry, but can be called with multiple entries if multiple sections cross the threshold at the same time
+
+    if (breakpoints.isSmaller('lg')) return // I don't want to update the route hash when the user is on a small screen, because the section links aren't visible
 
     intersectionEntriesOfSectionElementsThatCrossedTheThreshold.forEach((entry) => {
       intersectionObserverEntriesBySectionElementId.set(entry.target.id, entry)
@@ -59,7 +67,8 @@ useIntersectionObserver(
 )
 
 function replaceRouteHashHandler() {
-  if (programmaticScrollStore.isScrollingToHashProgrammatically) return
+  if (programmaticScrollStore.isScrollingToHashProgrammatically || breakpoints.isSmaller('lg'))
+    return
 
   const newHash = `#${idOfMostVisibleSection.value}`
   if (newHash === route.hash) return
