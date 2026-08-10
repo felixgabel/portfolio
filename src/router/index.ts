@@ -58,7 +58,7 @@ const router = createRouter({
       }
     }
 
-    programmaticScrollStore.setIsScrollingToHashProgrammatically(false)
+    programmaticScrollStore.setIsScrollingToHashProgrammatically(false) // I probably don't need this, but it doesn't hurt either. I just want to make sure that the value is set to false when the user navigates to a route without a hash.
 
     return {
       top: 0,
