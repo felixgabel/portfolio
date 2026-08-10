@@ -71,7 +71,7 @@ const socialLinks: SocialLink[] = [
           <li v-for="(sectionLink, indexOfSectionLink) in sectionLinks" :key="sectionLink.label">
             <RouterLink
               :to="{ name: 'home', hash: sectionLink.hash }"
-              @click="scrollToHashStore.setScrollToHashOnNextNavigation(true)"
+              @click="scrollToHashStore.setScrollToHashEnabled(true)"
               :data-active="
                 route.hash === sectionLink.hash || (!route.hash && indexOfSectionLink === 0)
                   ? true

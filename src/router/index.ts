@@ -43,10 +43,9 @@ const router = createRouter({
 
     if (to.hash) {
       const isInitialNavigation = from.matched.length === 0
-      const shouldScrollToHash =
-        isInitialNavigation || scrollToHashStore.scrollToHashOnNextNavigation
+      const shouldScrollToHash = isInitialNavigation || scrollToHashStore.scrollToHashEnabled
 
-      scrollToHashStore.setScrollToHashOnNextNavigation(false)
+      scrollToHashStore.setScrollToHashEnabled(false)
 
       if (!shouldScrollToHash) {
         return false
@@ -58,7 +57,7 @@ const router = createRouter({
       }
     }
 
-    scrollToHashStore.setScrollToHashOnNextNavigation(false)
+    scrollToHashStore.setScrollToHashEnabled(false)
 
     return {
       top: 0,
