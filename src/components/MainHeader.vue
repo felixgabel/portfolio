@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { useScrollToHashStore } from '../stores/scrollToHash'
 import BrandLinkedinIcon from '@iconify-vue/tabler/brand-linkedin'
 import BrandLinkedinFilledIcon from '@iconify-vue/tabler/brand-linkedin-filled'
 import BrandGithubIcon from '@iconify-vue/tabler/brand-github'
 import BrandGithubFilledIcon from '@iconify-vue/tabler/brand-github-filled'
 
 const route = useRoute()
+const scrollToHashStore = useScrollToHashStore()
 
 type SectionLink = {
   label: string
@@ -69,6 +71,7 @@ const socialLinks: SocialLink[] = [
           <li v-for="(sectionLink, indexOfSectionLink) in sectionLinks" :key="sectionLink.label">
             <RouterLink
               :to="{ name: 'home', hash: sectionLink.hash }"
+              @click="scrollToHashStore.setScrollToHashOnNextNavigation(true)"
               :data-active="
                 route.hash === sectionLink.hash || (!route.hash && indexOfSectionLink === 0)
                   ? true

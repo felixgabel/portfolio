@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useScrollToHashStore } from '../stores/scrollToHash'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -34,20 +35,33 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
+    const scrollToHashStore = useScrollToHashStore()
+
     if (savedPosition) {
       return savedPosition
     }
 
     if (to.hash) {
+      const isInitialNavigation = from.matched.length === 0
+      const shouldScrollToHash =
+        isInitialNavigation || scrollToHashStore.scrollToHashOnNextNavigation
+
+      scrollToHashStore.setScrollToHashOnNextNavigation(false)
+
+      if (!shouldScrollToHash) {
+        return false
+      }
+
       return {
         el: to.hash,
-        top: 96, // equals tailwind class scroll-mt-24 (24 * 4 = 96)
+        top: 96, // equals tailwind class scroll-mt-24 (24 * 4 = 96). I need this, but also the tailwind class, otherwise it sometimes doesn't apply the scroll-margin-top correctly on on page load.
       }
     }
 
+    scrollToHashStore.setScrollToHashOnNextNavigation(false)
+
     return {
       top: 0,
-      behavior: 'smooth',
     }
   },
 })
