@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, ref, watch, useTemplateRef } from 'vue'
-import { useIntersectionObserver } from '@vueuse/core'
+import { useIntersectionObserver, useScroll } from '@vueuse/core'
 import { useRoute, useRouter } from 'vue-router'
+import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
 
 const route = useRoute()
 const router = useRouter()
+const programmaticScrollStore = useProgrammaticScrollStore()
 
 const ueberMichSection = useTemplateRef<HTMLElement>('ueberMichSection')
 const erfahrungSection = useTemplateRef<HTMLElement>('erfahrungSection')
@@ -56,20 +58,25 @@ useIntersectionObserver(
   },
 )
 
-watch(idOfMostVisibleSection, (sectionId) => {
-  if (!sectionId) {
-    return
-  }
+function replaceRouteHashHandler() {
+  if (programmaticScrollStore.isScrollingToHashProgrammatically) return
 
-  const newHash = `#${sectionId}`
-  if (newHash === route.hash) {
-    return
-  }
+  const newHash = `#${idOfMostVisibleSection.value}`
+  if (newHash === route.hash) return
 
   router.replace({
     hash: newHash,
   })
+}
+
+watch(useScroll(window).isScrolling, (isScrolling) => {
+  // the replaceRouteHashHandler() should be called when I start scrolling as well. because if I programmatically scrolled to a section, which is not big enough to fit into the intersection observer's rootMargin, and then I start to scroll, the 'idOfMostVisibleSection' watcher will not fire, because the section is already intersecting. So I need to call the replaceRouteHashHandler() when scrolling starts as well.
+  const endedScrolling = !isScrolling
+  if (endedScrolling) return
+
+  replaceRouteHashHandler()
 })
+watch(idOfMostVisibleSection, replaceRouteHashHandler)
 </script>
 
 <template>
