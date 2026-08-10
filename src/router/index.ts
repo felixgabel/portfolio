@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useScrollToHashStore } from '../stores/scrollToHash'
+import { useProgrammaticScrollStore } from '../stores/programmaticScroll.ts'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -35,7 +35,7 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
-    const scrollToHashStore = useScrollToHashStore()
+    const programmaticScrollStore = useProgrammaticScrollStore()
 
     if (savedPosition) {
       return savedPosition
@@ -43,11 +43,12 @@ const router = createRouter({
 
     if (to.hash) {
       const isInitialNavigation = from.matched.length === 0
-      const shouldScrollToHash = isInitialNavigation || scrollToHashStore.scrollToHashEnabled
 
-      scrollToHashStore.setScrollToHashEnabled(false)
+      if (isInitialNavigation) {
+        programmaticScrollStore.setIsScrollingToHashProgrammatically(true)
+      } // it's important to have it as an if statement instead of an assignment, otherwise it will be set to false on every other navigation, even if the user clicked on a link with a hash.
 
-      if (!shouldScrollToHash) {
+      if (!programmaticScrollStore.isScrollingToHashProgrammatically) {
         return false
       }
 
@@ -57,7 +58,7 @@ const router = createRouter({
       }
     }
 
-    scrollToHashStore.setScrollToHashEnabled(false)
+    programmaticScrollStore.setIsScrollingToHashProgrammatically(false)
 
     return {
       top: 0,

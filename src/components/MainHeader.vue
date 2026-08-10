@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { useScrollToHashStore } from '../stores/scrollToHash'
+import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
 import BrandLinkedinIcon from '@iconify-vue/tabler/brand-linkedin'
 import BrandLinkedinFilledIcon from '@iconify-vue/tabler/brand-linkedin-filled'
 import BrandGithubIcon from '@iconify-vue/tabler/brand-github'
 import BrandGithubFilledIcon from '@iconify-vue/tabler/brand-github-filled'
 
 const route = useRoute()
-const scrollToHashStore = useScrollToHashStore()
+const programmaticScrollStore = useProgrammaticScrollStore()
 
 type SectionLink = {
   label: string
@@ -71,7 +71,7 @@ const socialLinks: SocialLink[] = [
           <li v-for="(sectionLink, indexOfSectionLink) in sectionLinks" :key="sectionLink.label">
             <RouterLink
               :to="{ name: 'home', hash: sectionLink.hash }"
-              @click="scrollToHashStore.setScrollToHashEnabled(true)"
+              @click="programmaticScrollStore.setIsScrollingToHashProgrammatically(true)"
               :data-active="
                 route.hash === sectionLink.hash || (!route.hash && indexOfSectionLink === 0)
                   ? true
