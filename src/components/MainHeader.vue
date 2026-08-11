@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { useEventListener } from '@vueuse/core'
 import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
 import BrandLinkedinIcon from '@iconify-vue/tabler/brand-linkedin'
 import BrandLinkedinFilledIcon from '@iconify-vue/tabler/brand-linkedin-filled'
@@ -10,31 +9,6 @@ import BrandGithubFilledIcon from '@iconify-vue/tabler/brand-github-filled'
 
 const route = useRoute()
 const programmaticScrollStore = useProgrammaticScrollStore()
-
-function setIsScrollingToHashProgrammaticallyFalse() {
-  programmaticScrollStore.setIsScrollingToHashProgrammatically(false)
-}
-
-// 'scrollend' is the most important one, because after a programmatic scroll stops, it automatically sets the isScrollingToHashProgrammatically to false, which is what I want. The other event listeners are just for safety, in case the user interrupts the programmatic scroll with a mouse wheel, touch move, or key press.
-useEventListener(window, 'scrollend', setIsScrollingToHashProgrammaticallyFalse)
-useEventListener(window, 'wheel', setIsScrollingToHashProgrammaticallyFalse, { passive: true })
-useEventListener(window, 'touchmove', setIsScrollingToHashProgrammaticallyFalse, { passive: true })
-const keysThatCanTriggerScrolling = new Set([
-  'ArrowUp',
-  'ArrowDown',
-  'PageUp',
-  'PageDown',
-  'Home',
-  'End',
-  ' ',
-])
-useEventListener(window, 'keydown', (event) => {
-  if (!keysThatCanTriggerScrolling.has(event.key)) {
-    return
-  }
-
-  setIsScrollingToHashProgrammaticallyFalse()
-})
 
 type SectionLink = {
   label: string
