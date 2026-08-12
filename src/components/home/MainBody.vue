@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, useTemplateRef } from 'vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import ExternalLink from './ExternalLink.vue'
+import ExternalLink from '../ExternalLink.vue'
 
 // Only load the component when it is actually rendered.
 const SectionHashSyncForProgrammaticScroll = defineAsyncComponent(
-  () => import('./SectionHashSyncForProgrammaticScroll.vue'),
+  () => import('../../composables/SectionHashSyncForProgrammaticScroll.vue'),
 )
 
 const breakpoints = useBreakpoints(breakpointsTailwind)

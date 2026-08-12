@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
+import { useProgrammaticScrollStore } from '../../stores/programmaticScroll'
 import BrandLinkedinIcon from '@iconify-vue/tabler/brand-linkedin'
 import BrandLinkedinFilledIcon from '@iconify-vue/tabler/brand-linkedin-filled'
 import BrandGithubIcon from '@iconify-vue/tabler/brand-github'
