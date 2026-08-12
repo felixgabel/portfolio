@@ -15,7 +15,6 @@ const sectionLinks: SectionLink[] = [
   { label: 'Erfahrung', hash: `#${SectionIDs.Experience}` },
   { label: 'Lebenslauf', hash: `#${SectionIDs.Resume}` },
 ]
-
 </script>
 
 <template>
