@@ -54,11 +54,13 @@ const router = createRouter({
 
       return {
         el: to.hash,
-        top: 96, // equals tailwind class scroll-mt-24 (24 * 4 = 96). I need this, but also the tailwind class, otherwise it sometimes doesn't apply the scroll-margin-top correctly on on page load.
+        top: 96, // equals tailwind class scroll-mt-24 (24 * 4 = 96) on the element with the corresponding hash. I need this, but also the tailwind class, otherwise it sometimes doesn't apply the scroll-margin-top correctly on on page load.
       }
     }
 
-    programmaticScrollStore.setIsScrollingToHashProgrammatically(false) // I probably don't need this, but it doesn't hurt either. I just want to make sure that the value is set to false when the user navigates to a route without a hash.
+    if (!(to.name === 'home')) {
+      programmaticScrollStore.setIsScrollingToHashProgrammatically(false) // I probably don't need this, but it doesn't hurt either. I just want to make sure that the value is set to false when the user navigates away from home.
+    }
 
     return {
       top: 0,
