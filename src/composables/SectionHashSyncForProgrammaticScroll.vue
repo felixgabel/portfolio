@@ -3,16 +3,19 @@ import { computed, ref, watch } from 'vue'
 import { useIntersectionObserver, useScroll, useEventListener } from '@vueuse/core'
 import { useRoute, useRouter } from 'vue-router'
 import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
+import { SectionIDs } from '../enums/SectionIDs'
 
 const route = useRoute()
 const router = useRouter()
 const programmaticScrollStore = useProgrammaticScrollStore()
 
-const props = defineProps<{
-  sections: HTMLElement[]
-}>()
+const allSectionIds = Object.values(SectionIDs)
 
-const allSectionElements = computed(() => props.sections)
+const allSectionElements = computed<HTMLElement[]>(() =>
+  allSectionIds
+    .map((sectionId) => document.getElementById(sectionId))
+    .filter((sectionElement): sectionElement is HTMLElement => sectionElement !== null),
+)
 
 const idOfMostVisibleSection = ref<string | null>(null)
 const intersectionObserverEntriesBySectionElementId = new Map<string, IntersectionObserverEntry>()

@@ -1,35 +1,38 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, useTemplateRef } from 'vue'
+import type { Component } from 'vue'
+import { defineAsyncComponent } from 'vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import { SectionIDs } from '../../enums/SectionIDs.ts'
 import AboutMeSection from './sections/AboutMeSection.vue'
+import ExperienceSection from './sections/ExperienceSection.vue'
+import ResumeSection from './sections/ResumeSection.vue'
 
+// --- SECTION HASH SYNC FOR PROGRAMMATIC SCROLL ---
 // Only load the component when it is actually rendered.
 const SectionHashSyncForProgrammaticScroll = defineAsyncComponent(
   () => import('../../composables/SectionHashSyncForProgrammaticScroll.vue'),
 )
-
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const twoColumnLayout = breakpoints.greaterOrEqual('lg')
 
-const ueberMichSection = useTemplateRef<HTMLElement>('ueberMichSection')
-const erfahrungSection = useTemplateRef<HTMLElement>('erfahrungSection')
-const lebenslaufSection = useTemplateRef<HTMLElement>('lebenslaufSection')
-const allSectionElements = computed<HTMLElement[]>(() =>
-  [ueberMichSection.value, erfahrungSection.value, lebenslaufSection.value].filter(
-    (sectionElement): sectionElement is HTMLElement => sectionElement !== null,
-  ),
-)
+// --- SECTIONS ---
+type Section = {
+  id: SectionIDs
+  component: Component
+}
+const homeSections: Section[] = [
+  { id: SectionIDs.AboutMe, component: AboutMeSection },
+  { id: SectionIDs.Experience, component: ExperienceSection },
+  { id: SectionIDs.Resume, component: ResumeSection },
+]
 </script>
 
 <template>
-  <SectionHashSyncForProgrammaticScroll v-if="twoColumnLayout" :sections="allSectionElements" />
+  <SectionHashSyncForProgrammaticScroll v-if="twoColumnLayout" />
 
   <main class="flex flex-col gap-24 pt-24 lg:w-[52%] lg:py-24">
-    <section id="ueber-mich" ref="ueberMichSection"><AboutSection /></section>
-
-    <section id="erfahrung" ref="erfahrungSection"><AboutSection /></section>
-
-    <section id="lebenslauf" ref="lebenslaufSection"><AboutSection /></section>
+    <section v-for="homeSection in homeSections" :key="homeSection.id" :id="homeSection.id">
+      <component :is="homeSection.component" />
+    </section>
   </main>
 </template>

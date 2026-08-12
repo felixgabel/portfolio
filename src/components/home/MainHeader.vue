@@ -2,6 +2,7 @@
 import type { Component } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useProgrammaticScrollStore } from '../../stores/programmaticScroll'
+import { SectionIDs } from '../../enums/SectionIDs'
 import BrandLinkedinIcon from '@iconify-vue/tabler/brand-linkedin'
 import BrandLinkedinFilledIcon from '@iconify-vue/tabler/brand-linkedin-filled'
 import BrandGithubIcon from '@iconify-vue/tabler/brand-github'
@@ -16,9 +17,9 @@ type SectionLink = {
 }
 
 const sectionLinks: SectionLink[] = [
-  { label: 'Über mich', hash: '#ueber-mich' },
-  { label: 'Erfahrung', hash: '#erfahrung' },
-  { label: 'Lebenslauf', hash: '#lebenslauf' },
+  { label: 'Über mich', hash: `#${SectionIDs.AboutMe}` },
+  { label: 'Erfahrung', hash: `#${SectionIDs.Experience}` },
+  { label: 'Lebenslauf', hash: `#${SectionIDs.Resume}` },
 ]
 
 type SocialLink = {
