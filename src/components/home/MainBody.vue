@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, useTemplateRef } from 'vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import AboutSection from './sections/AboutSection.vue'
+import { SectionIDs } from '../../enums/SectionIDs.ts'
+import AboutMeSection from './sections/AboutMeSection.vue'
 
 // Only load the component when it is actually rendered.
 const SectionHashSyncForProgrammaticScroll = defineAsyncComponent(
