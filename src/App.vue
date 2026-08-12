@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import BodyContainer from './components/BodyContainer.vue'
-import MainHeader from './components/home/MainHeader.vue'
 import MagneticDotGridCanvas from './components/MagneticDotGridCanvas.vue'
-import MainBody from './components/home/MainBody.vue'
+import BodyContainer from './components/BodyContainer.vue'
+import HomeHeader from './components/home/HomeHeader.vue'
+import HomeMain from './components/home/HomeMain.vue'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 void breakpoints
@@ -16,8 +16,8 @@ const showDotGridCanvas = false
 
   <BodyContainer>
     <div class="lg:flex lg:justify-between lg:gap-4">
-      <MainHeader></MainHeader>
-      <MainBody></MainBody>
+      <HomeHeader></HomeHeader>
+      <HomeMain></HomeMain>
     </div>
   </BodyContainer>
 </template>
