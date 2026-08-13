@@ -14,6 +14,6 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply /*text-[17px]/7*/ min-h-dvh leading-relaxed text-neutral-600 antialiased selection:bg-neutral-700/12 lg:leading-loose dark:bg-black dark:text-neutral-300/85 dark:selection:bg-neutral-300/18;
+    @apply /*text-[17px]/7*/ /*lg:leading-loose*/ min-h-dvh leading-relaxed text-neutral-600 antialiased selection:bg-neutral-700/12 dark:bg-black dark:text-neutral-300/85 dark:selection:bg-neutral-300/18;
   }
 }
