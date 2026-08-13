@@ -3,7 +3,7 @@ import ExternalLink from '../../ExternalLink.vue'
 </script>
 
 <template>
-  <div class="flex scroll-mt-24 flex-col gap-4">
+  <div class="flex flex-col gap-4">
     <p>
       Hallo! Ich bin Felix. Ein erfahrener Frontend-Entwickler mit einer Leidenschaft für die
       Entwicklung von <span class="italic">übersichtlichen</span>,

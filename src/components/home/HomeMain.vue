@@ -26,7 +26,12 @@ const homeSections: Section[] = [
 
 <template>
   <main class="flex flex-col gap-24 pt-24 lg:w-[52%] lg:py-24">
-    <section v-for="homeSection in homeSections" :key="homeSection.id" :id="homeSection.id">
+    <section
+      v-for="homeSection in homeSections"
+      :key="homeSection.id"
+      :id="homeSection.id"
+      class="scroll-mt-24"
+    >
       <component :is="homeSection.component" />
     </section>
   </main>
