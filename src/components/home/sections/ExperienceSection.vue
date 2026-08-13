@@ -53,7 +53,7 @@ const projectsSortedByDateEnd = [...projects].sort(
 </script>
 
 <template>
-  <ol class="flex list-none flex-col gap-12 p-0">
+  <ol class="group/list flex list-none flex-col gap-12 p-0">
     <li
       v-for="project in projectsSortedByDateEnd"
       :key="project.id"
