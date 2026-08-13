@@ -25,19 +25,16 @@ const homeSections: Section[] = [
 </script>
 
 <template>
-  <main class="flex flex-col gap-24 pt-24 lg:w-[52%] lg:gap-48 lg:py-24">
-    <section
-      v-for="(homeSection, indexOfHomeSection) in homeSections"
-      :key="homeSection.id"
-      :id="homeSection.id"
-      class="relative scroll-mt-24"
-    >
-      <component :is="homeSection.component" />
+  <main class="flex flex-col gap-24 pt-24 lg:w-[52%] lg:py-24">
+    <template v-for="(homeSection, indexOfHomeSection) in homeSections" :key="homeSection.id">
+      <section :id="homeSection.id" class="scroll-mt-24">
+        <component :is="homeSection.component" />
+      </section>
       <hr
         v-if="twoColumnLayout && indexOfHomeSection !== homeSections.length - 1"
-        class="absolute -bottom-24 h-px w-full border-0 bg-linear-to-r from-neutral-300 to-transparent"
+        class="h-px border-0 bg-linear-to-r from-neutral-300 to-transparent"
         aria-hidden="true"
       />
-    </section>
+    </template>
   </main>
 </template>
