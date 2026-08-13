@@ -1,4 +1,13 @@
-import { type MaybeRefOrGetter, onMounted, onScopeDispose, ref, toValue, watch } from 'vue'
+import {
+  type EffectScope,
+  type MaybeRefOrGetter,
+  effectScope,
+  onMounted,
+  onScopeDispose,
+  ref,
+  toValue,
+  watch,
+} from 'vue'
 import { useIntersectionObserver, useScroll, useEventListener } from '@vueuse/core'
 import { useRoute, useRouter } from 'vue-router'
 import { useProgrammaticScrollStore } from '../stores/programmaticScroll'
@@ -66,97 +75,84 @@ export function useSectionHashSyncForProgrammaticScroll(enabled: MaybeRefOrGette
     ' ',
   ])
 
-  // Holds the teardown functions for everything set up in startListening(),
-  // so stopListening() can cleanly undo it when `enabled` flips to false.
-  let stopFunctions: Array<() => void> = []
+  // All listening-related effects (the IntersectionObserver, both watches,
+  // and every window event listener) are created inside this scope. Instead
+  // of manually tracking each one's individual stop function, a single
+  // scope.stop() call tears down everything created inside scope.run() —
+  // including cleanup that VueUse composables register internally.
+  let listeningScope: EffectScope | null = null
 
   function startListening() {
-    const { stop: stopIntersectionObserver } = useIntersectionObserver(
-      allSectionElements,
-      (intersectionEntriesOfSectionElementsThatCrossedTheThreshold) => {
-        // usually called with only one entry, but can be called with multiple entries if multiple sections cross the threshold at the same time
+    listeningScope = effectScope()
 
-        intersectionEntriesOfSectionElementsThatCrossedTheThreshold.forEach((entry) => {
-          intersectionObserverEntriesBySectionElementId.set(entry.target.id, entry)
-        })
+    listeningScope.run(() => {
+      useIntersectionObserver(
+        allSectionElements,
+        (intersectionEntriesOfSectionElementsThatCrossedTheThreshold) => {
+          // usually called with only one entry, but can be called with multiple entries if multiple sections cross the threshold at the same time
 
-        const visibleEntries = Array.from(
-          intersectionObserverEntriesBySectionElementId.values(),
-        ).filter((entry) => entry.isIntersecting)
+          intersectionEntriesOfSectionElementsThatCrossedTheThreshold.forEach((entry) => {
+            intersectionObserverEntriesBySectionElementId.set(entry.target.id, entry)
+          })
 
-        const mostVisibleEntry = visibleEntries.reduce<IntersectionObserverEntry | null>(
-          (mostVisibleEntry, currentEntry) => {
-            if (!mostVisibleEntry) return currentEntry
+          const visibleEntries = Array.from(
+            intersectionObserverEntriesBySectionElementId.values(),
+          ).filter((entry) => entry.isIntersecting)
 
-            return currentEntry.intersectionRatio > mostVisibleEntry.intersectionRatio
-              ? currentEntry
-              : mostVisibleEntry
-          },
-          null,
-        )
+          const mostVisibleEntry = visibleEntries.reduce<IntersectionObserverEntry | null>(
+            (mostVisibleEntry, currentEntry) => {
+              if (!mostVisibleEntry) return currentEntry
 
-        if (!mostVisibleEntry) {
+              return currentEntry.intersectionRatio > mostVisibleEntry.intersectionRatio
+                ? currentEntry
+                : mostVisibleEntry
+            },
+            null,
+          )
+
+          if (!mostVisibleEntry) {
+            return
+          }
+
+          idOfMostVisibleSection.value = mostVisibleEntry.target.id
+        },
+        {
+          root: null, // Not specifying a root element means the viewport is used as the root
+          rootMargin: '-30% 0px -55% 0px', // This basically ensures that the section is considered "visible" when it's the one between top: 30% and bottom: 55% of the viewport
+          threshold: [0, 0.25, 0.5, 0.75, 1], // Trigger the callback at various visibility thresholds
+        },
+      )
+
+      watch(useScroll(window).isScrolling, (isScrolling) => {
+        // the replaceRouteHashHandler() should be called when I start scrolling as well. because if I programmatically scrolled to a section, which is not big enough to fit into the intersection observer's rootMargin, and then I start to scroll, the 'idOfMostVisibleSection' watcher will not fire, because the section is already intersecting. So I need to call the replaceRouteHashHandler() when scrolling starts as well.
+        const endedScrolling = !isScrolling
+        if (endedScrolling) return
+
+        replaceRouteHashHandler()
+      })
+      watch(idOfMostVisibleSection, replaceRouteHashHandler)
+
+      // 'scrollend' is the most important one, because after a programmatic scroll stops, it automatically sets the isScrollingToHashProgrammatically to false, which is what I want. The other event listeners are just for safety, in case the user interrupts the programmatic scroll with a mouse wheel, touch move, or key press.
+      useEventListener(window, 'scrollend', setIsScrollingToHashProgrammaticallyFalse)
+      useEventListener(window, 'wheel', setIsScrollingToHashProgrammaticallyFalse, {
+        passive: true,
+      })
+      useEventListener(window, 'touchmove', setIsScrollingToHashProgrammaticallyFalse, {
+        passive: true,
+      })
+      useEventListener(window, 'keydown', (event) => {
+        if (!keysThatCanTriggerScrolling.has(event.key)) {
           return
         }
 
-        idOfMostVisibleSection.value = mostVisibleEntry.target.id
-      },
-      {
-        root: null, // Not specifying a root element means the viewport is used as the root
-        rootMargin: '-30% 0px -55% 0px', // This basically ensures that the section is considered "visible" when it's the one between top: 30% and bottom: 55% of the viewport
-        threshold: [0, 0.25, 0.5, 0.75, 1], // Trigger the callback at various visibility thresholds
-      },
-    )
-
-    const stopScrollStartWatch = watch(useScroll(window).isScrolling, (isScrolling) => {
-      // the replaceRouteHashHandler() should be called when I start scrolling as well. because if I programmatically scrolled to a section, which is not big enough to fit into the intersection observer's rootMargin, and then I start to scroll, the 'idOfMostVisibleSection' watcher will not fire, because the section is already intersecting. So I need to call the replaceRouteHashHandler() when scrolling starts as well.
-      const endedScrolling = !isScrolling
-      if (endedScrolling) return
-
-      replaceRouteHashHandler()
+        setIsScrollingToHashProgrammaticallyFalse()
+      })
     })
-    const stopMostVisibleSectionWatch = watch(idOfMostVisibleSection, replaceRouteHashHandler)
-
-    // 'scrollend' is the most important one, because after a programmatic scroll stops, it automatically sets the isScrollingToHashProgrammatically to false, which is what I want. The other event listeners are just for safety, in case the user interrupts the programmatic scroll with a mouse wheel, touch move, or key press.
-    const stopScrollendListener = useEventListener(
-      window,
-      'scrollend',
-      setIsScrollingToHashProgrammaticallyFalse,
-    )
-    const stopWheelListener = useEventListener(
-      window,
-      'wheel',
-      setIsScrollingToHashProgrammaticallyFalse,
-      { passive: true },
-    )
-    const stopTouchmoveListener = useEventListener(
-      window,
-      'touchmove',
-      setIsScrollingToHashProgrammaticallyFalse,
-      { passive: true },
-    )
-    const stopKeydownListener = useEventListener(window, 'keydown', (event) => {
-      if (!keysThatCanTriggerScrolling.has(event.key)) {
-        return
-      }
-
-      setIsScrollingToHashProgrammaticallyFalse()
-    })
-
-    stopFunctions = [
-      stopIntersectionObserver,
-      stopScrollStartWatch,
-      stopMostVisibleSectionWatch,
-      stopScrollendListener,
-      stopWheelListener,
-      stopTouchmoveListener,
-      stopKeydownListener,
-    ]
   }
 
   function stopListening() {
-    stopFunctions.forEach((stop) => stop())
-    stopFunctions = []
+    listeningScope?.stop()
+    listeningScope = null
     intersectionObserverEntriesBySectionElementId.clear()
     idOfMostVisibleSection.value = null
   }
