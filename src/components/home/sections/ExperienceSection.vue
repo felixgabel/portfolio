@@ -78,7 +78,7 @@ const projectsSortedByDateEnd = [...projects].sort(
             target="_blank"
             rel="noopener noreferrer"
             class="group/link inline-flex items-baseline leading-tight text-neutral-900 dark:text-neutral-100"
-            :aria-label="`${project.title} (opens in a new tab)`"
+            :aria-label="`${project.title} (öffnet in neuem Tab)`"
           >
             <span
               class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"
