@@ -88,7 +88,7 @@ const projectsSortedByDateEnd = [...projects].sort(
             <span class="inline-flex items-center gap-2">
               {{ project.title }}
               <ArrowUpRightIcon
-                class="size-4 shrink-0 text-neutral-600 transition-transform group-hover/link:translate-x-0.75 group-hover/link:-translate-y-0.75 motion-reduce:transition-none dark:text-neutral-300/85"
+                class="size-4 shrink-0 text-neutral-600 transition-transform group-hover/link:translate-x-0.75 group-hover/link:-translate-y-0.75 group-focus-visible/link:translate-x-0.75 group-focus-visible/link:-translate-y-0.75 motion-reduce:transition-none dark:text-neutral-300/85"
               ></ArrowUpRightIcon>
             </span>
           </a>
