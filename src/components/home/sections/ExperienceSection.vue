@@ -53,11 +53,11 @@ const projectsSortedByDateEnd = [...projects].sort(
 </script>
 
 <template>
-  <ol class="group/list flex list-none flex-col gap-12 p-0">
+  <ol class="group/list flex flex-col gap-12">
     <li
       v-for="project in projectsSortedByDateEnd"
       :key="project.id"
-      class="group relative grid pb-1 transition-opacity motion-reduce:transition-none lg:group-hover/list:opacity-50 lg:hover:opacity-100"
+      class="group relative grid transition-opacity motion-reduce:transition-none lg:group-hover/list:opacity-50 lg:hover:opacity-100"
     >
       <div
         class="absolute -inset-6 -z-1 hidden rounded-xl opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_22px_0_rgb(255_255_255/.75)] drop-shadow-sm/12 backdrop-blur-[1.3px] transition-opacity group-hover:opacity-100 motion-reduce:transition-none lg:block"
@@ -65,24 +65,23 @@ const projectsSortedByDateEnd = [...projects].sort(
       ></div>
 
       <header
-        class="z-10 mt-1 mb-2 text-xs font-semibold tracking-wide text-neutral-500 uppercase sm:col-span-2"
-        :aria-label="formatDateOfGivenProject(project.id)"
+        class="mt-1 mb-2 text-xs font-semibold tracking-wide text-neutral-500 uppercase sm:col-span-2"
       >
         {{ formatDateOfGivenProject(project.id) }}
       </header>
 
-      <div class="z-10 sm:col-span-6">
+      <div class="sm:col-span-6">
         <h3 class="text-lg leading-snug font-semibold text-neutral-900 dark:text-neutral-100">
           <a
             :href="project.link"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/link inline-flex items-baseline leading-tight text-neutral-900 dark:text-neutral-100"
+            class="group/link inline-flex items-baseline leading-tight"
             :aria-label="`${project.title} (öffnet in neuem Tab)`"
           >
-            <span
-              class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"
-            ></span>
+            <span class="absolute -inset-6 hidden rounded lg:block"
+              ><!-- this element has to have the same inset as the glass div --></span
+            >
             <span>
               {{ project.title }}
               <svg
@@ -101,7 +100,7 @@ const projectsSortedByDateEnd = [...projects].sort(
             </span>
           </a>
         </h3>
-        <p class="mt-2 text-sm leading-normal text-neutral-600 dark:text-neutral-300/85">
+        <p class="mt-2 text-sm leading-normal">
           {{ project.description }}
         </p>
       </div>
