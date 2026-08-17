@@ -60,7 +60,7 @@ const projectsSortedByDateEnd = [...projects].sort(
       class="group relative grid pb-1 transition-opacity motion-reduce:transition-none lg:group-hover/list:opacity-50 lg:hover:opacity-100"
     >
       <div
-        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md bg-transparent transition-colors motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-neutral-100 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(115,115,115,0.08)] lg:group-hover:drop-shadow-lg dark:lg:group-hover:bg-neutral-900/60"
+        class="absolute -inset-6 -z-1 hidden rounded-xl opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_22px_0_rgb(255_255_255/.75)] drop-shadow-sm/12 backdrop-blur-[1.3px] transition-opacity group-hover:opacity-100 motion-reduce:transition-none lg:block"
         aria-hidden="true"
       ></div>
 
