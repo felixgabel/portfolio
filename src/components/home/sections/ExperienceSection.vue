@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { v4 as uuidv4 } from 'uuid'
+
 type Project = {
-  id: number
+  id: string
   title: string
   dateStart: Date
   dateEnd: Date
@@ -10,7 +12,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: 1,
+    id: uuidv4(),
     title: 'Portfolio Webseite',
     dateStart: new Date(2026, 4),
     dateEnd: new Date(2026, 7),
@@ -19,7 +21,7 @@ const projects: Project[] = [
     link: 'https://github.com/felixgabel/portfolio',
   },
   {
-    id: 2,
+    id: uuidv4(),
     title: 'ezSheets',
     dateStart: new Date(2022, 0),
     dateEnd: new Date(2025, 11),
@@ -29,7 +31,7 @@ const projects: Project[] = [
   },
 ]
 
-function formatDateOfGivenProject(id: number): string {
+function formatDateOfGivenProject(id: string): string {
   const project = projects.find((project) => project.id === id)
   if (!project) throw new Error(`Project with id ${id} not found`)
 
