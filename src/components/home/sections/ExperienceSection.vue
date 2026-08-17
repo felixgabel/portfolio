@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from 'uuid'
+import ArrowUpRightIcon from '@iconify-vue/tabler/arrow-up-right'
 
 type Project = {
   id: string
@@ -84,21 +85,11 @@ const projectsSortedByDateEnd = [...projects].sort(
             <span class="absolute -inset-6 hidden rounded lg:block"
               ><!-- this element has to have the same inset as the glass div --></span
             >
-            <span>
+            <span class="inline-flex items-center gap-2">
               {{ project.title }}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                class="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 motion-reduce:transition-none"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <ArrowUpRightIcon
+                class="size-4 shrink-0 transition-transform group-hover/link:translate-x-0.75 group-hover/link:-translate-y-0.75 motion-reduce:transition-none"
+              ></ArrowUpRightIcon>
             </span>
           </a>
         </h3>
