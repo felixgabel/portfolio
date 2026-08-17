@@ -57,7 +57,7 @@ const projectsSortedByDateEnd = [...projects].sort(
     <li
       v-for="project in projectsSortedByDateEnd"
       :key="project.id"
-      class="group relative grid transition-opacity motion-reduce:transition-none lg:group-hover/list:opacity-50 lg:hover:opacity-100"
+      class="group relative grid transition-opacity motion-reduce:transition-none lg:grid-cols-8 lg:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100"
     >
       <div
         class="absolute -inset-6 -z-1 hidden rounded-xl opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_22px_0_rgb(255_255_255/.75)] drop-shadow-sm/12 backdrop-blur-[1.3px] transition-opacity group-hover:opacity-100 motion-reduce:transition-none lg:block"
@@ -65,12 +65,12 @@ const projectsSortedByDateEnd = [...projects].sort(
       ></div>
 
       <header
-        class="mt-1 mb-2 text-xs font-semibold tracking-wide text-neutral-500 uppercase sm:col-span-2"
+        class="mt-1 mb-2 text-xs font-semibold tracking-wide text-neutral-500 uppercase lg:col-span-2"
       >
         {{ formatDateOfGivenProject(project.id) }}
       </header>
 
-      <div class="sm:col-span-6">
+      <div class="lg:col-span-6">
         <h3 class="text-lg leading-snug font-semibold text-neutral-900 dark:text-neutral-100">
           <a
             :href="project.link"
