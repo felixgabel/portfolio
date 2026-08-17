@@ -35,8 +35,8 @@ function formatDateOfGivenProject(id: number): string {
 
   const startYear = project.dateStart.getFullYear()
   const endYear = project.dateEnd.getFullYear()
-  const startMonth = project.dateStart.toLocaleString('de-DE', { month: 'long' })
-  const endMonth = project.dateEnd.toLocaleString('de-DE', { month: 'long' })
+  const startMonth = project.dateStart.toLocaleString('de-DE', { month: 'short' })
+  const endMonth = project.dateEnd.toLocaleString('de-DE', { month: 'short' })
 
   const spansMultipleYears = startYear !== endYear
 
