@@ -60,10 +60,10 @@ const projectsSortedByDateEnd = [...projects].sort(
     <li
       v-for="project in projectsSortedByDateEnd"
       :key="project.id"
-      class="group relative grid transition-opacity motion-reduce:transition-none lg:grid-cols-8 lg:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100"
+      class="group relative grid transition-opacity duration-200 motion-reduce:transition-none lg:grid-cols-8 lg:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100"
     >
       <div
-        class="absolute -inset-6 -z-1 hidden rounded-xl opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_22px_0_rgb(255_255_255/.75)] drop-shadow-sm/12 backdrop-blur-[1.3px] transition-opacity group-hover:opacity-100 motion-reduce:transition-none lg:block"
+        class="absolute -inset-6 -z-1 hidden rounded-xl opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_22px_0_rgb(255_255_255/.75)] drop-shadow-sm/12 backdrop-blur-[1.3px] transition-opacity duration-200 group-hover:opacity-100 motion-reduce:transition-none lg:block dark:inset-shadow-[0_0_22px_0_rgb(60_60_60/.75)] dark:drop-shadow-lg dark:drop-shadow-white dark:backdrop-brightness-130"
         aria-hidden="true"
       ></div>
 
@@ -88,7 +88,7 @@ const projectsSortedByDateEnd = [...projects].sort(
             <span class="inline-flex items-center gap-2">
               {{ project.title }}
               <ArrowUpRightIcon
-                class="size-4 shrink-0 text-neutral-600 transition-transform group-hover/link:translate-x-0.75 group-hover/link:-translate-y-0.75 group-focus-visible/link:translate-x-0.75 group-focus-visible/link:-translate-y-0.75 motion-reduce:transition-none dark:text-neutral-300/85"
+                class="size-4 shrink-0 text-neutral-600 transition-transform duration-200 group-hover/link:translate-x-0.75 group-hover/link:-translate-y-0.75 group-focus-visible/link:translate-x-0.75 group-focus-visible/link:-translate-y-0.75 motion-reduce:transition-none dark:text-neutral-300/85"
               ></ArrowUpRightIcon>
             </span>
           </a>
