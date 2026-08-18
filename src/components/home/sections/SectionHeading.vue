@@ -22,7 +22,7 @@ const isStuck = computed(() => top.value <= 0)
       <slot></slot>
     </h2>
   </div>
-  <div class="h-19">
+  <div class="h-19 lg:hidden">
     <!-- this spacer actually just adds 'h-4' but I have to account for the negative margin on the sticky header, which is '-mb-15' -->
   </div>
 </template>
