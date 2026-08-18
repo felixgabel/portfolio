@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from 'uuid'
 import ArrowUpRightIcon from '@iconify-vue/tabler/arrow-up-right'
+import SectionHeading from './SectionHeading.vue'
 
 type Project = {
   id: string
@@ -56,6 +57,7 @@ const projectsSortedByDateEnd = [...projects].sort(
 </script>
 
 <template>
+  <SectionHeading>Erfahrung</SectionHeading>
   <ol class="group/list flex flex-col gap-12">
     <li
       v-for="project in projectsSortedByDateEnd"

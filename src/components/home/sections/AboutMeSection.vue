@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import ExternalLink from '../../ExternalLink.vue'
+import SectionHeading from './SectionHeading.vue'
 </script>
 
 <template>
+  <SectionHeading>Über mich</SectionHeading>
   <div class="flex flex-col gap-4">
     <p>
       Hallo! Ich bin Felix. Ein erfahrener Frontend-Entwickler mit einer Leidenschaft für die
