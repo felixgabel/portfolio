@@ -151,7 +151,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="pointer-events-none fixed inset-0 -z-1 backdrop-blur-[0.4px] dark:backdrop-blur-[0.8px] dark:backdrop-brightness-175"
+    class="pointer-events-none fixed inset-0 -z-99 backdrop-blur-[0.4px] dark:backdrop-blur-[0.8px] dark:backdrop-brightness-175"
   ></div>
-  <canvas ref="canvasRef" class="fixed inset-0 -z-10 block h-screen w-screen dark:invert" />
+  <canvas ref="canvasRef" class="fixed inset-0 -z-100 block h-screen w-screen dark:invert" />
 </template>
