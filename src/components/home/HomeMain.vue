@@ -32,7 +32,7 @@ const homeSections: Section[] = [
       </section>
       <hr
         v-if="twoColumnLayout && indexOfHomeSection !== homeSections.length - 1"
-        class="h-px border-0 bg-linear-to-r from-neutral-300 to-transparent dark:from-neutral-600"
+        class="h-px border-0 bg-radial from-neutral-200 to-transparent to-85% dark:from-neutral-800"
         aria-hidden="true"
       />
     </template>
