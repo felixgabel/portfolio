@@ -5,7 +5,6 @@ import { useSectionHashSyncForProgrammaticScroll } from '../../composables/Secti
 import { SectionIDs } from '../../enums/SectionIDs.ts'
 import AboutMeSection from './sections/AboutMeSection.vue'
 import ExperienceSection from './sections/ExperienceSection.vue'
-import ResumeSection from './sections/ResumeSection.vue'
 
 // --- SECTION HASH SYNC FOR PROGRAMMATIC SCROLL ---
 const breakpoints = useBreakpoints(breakpointsTailwind)
@@ -20,7 +19,6 @@ type Section = {
 const homeSections: Section[] = [
   { id: SectionIDs.AboutMe, component: AboutMeSection },
   { id: SectionIDs.Experience, component: ExperienceSection },
-  { id: SectionIDs.Resume, component: ResumeSection },
 ]
 </script>
 

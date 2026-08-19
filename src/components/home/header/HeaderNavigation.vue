@@ -13,7 +13,6 @@ type SectionLink = {
 const sectionLinks: SectionLink[] = [
   { label: 'Über mich', hash: `#${SectionIDs.AboutMe}` },
   { label: 'Erfahrung', hash: `#${SectionIDs.Experience}` },
-  { label: 'Lebenslauf', hash: `#${SectionIDs.Resume}` },
 ]
 </script>
 
