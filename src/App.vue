@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import MagneticDotGridCanvas from './components/MagneticDotGridCanvas.vue'
-import BodyContainer from './components/BodyContainer.vue'
+import AppContainer from './components/AppContainer.vue'
 import HomeHeader from './components/home/HomeHeader.vue'
 import HomeMain from './components/home/HomeMain.vue'
 
@@ -14,10 +14,10 @@ const showDotGridCanvas = false
 <template>
   <MagneticDotGridCanvas v-if="showDotGridCanvas"></MagneticDotGridCanvas>
 
-  <BodyContainer>
+  <AppContainer>
     <div class="lg:flex lg:justify-between lg:gap-4">
       <HomeHeader></HomeHeader>
       <HomeMain></HomeMain>
     </div>
-  </BodyContainer>
+  </AppContainer>
 </template>
