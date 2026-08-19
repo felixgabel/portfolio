@@ -12,7 +12,7 @@ type ContactLink = {
 }
 const contactLinks: ContactLink[] = [
   {
-    href: 'mailto:felix@example.com',
+    href: 'mailto:gabelfelix.dev@icloud.com',
     label: 'Email',
     outlineIcon: MailIcon,
     filledIcon: MailFilledIcon,

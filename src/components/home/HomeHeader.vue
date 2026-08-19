@@ -15,7 +15,6 @@ import HeaderContactLinks from './header/HeaderContactLinks.vue'
     </div>
     <div class="mt-8 flex items-center gap-4">
       <HeaderContactLinks />
-      <div class="size-0.75 rounded-full bg-neutral-700 dark:bg-neutral-300"></div>
       <HeaderSocialLinks />
     </div>
   </header>

@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@iconify-vue/tabler/chevron-left'
       :to="{ name: 'home' }"
       class="group relative -m-2.5"
       aria-label="Zurück zur Homepage"
+      replace
     >
       <span class="sr-only">Zurück zur Homepage</span>
       <ChevronLeftIcon class="size-15 text-neutral-700 dark:text-neutral-300" aria-hidden="true" />
