@@ -5,8 +5,8 @@ import AppContainer from './components/AppContainer.vue'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 void breakpoints
-// const showDotGridCanvas = breakpoints.greaterOrEqual('lg')
-const showDotGridCanvas = false
+const showDotGridCanvas = breakpoints.greaterOrEqual('lg')
+// const showDotGridCanvas = false
 </script>
 
 <template>

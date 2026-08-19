@@ -1,50 +1,42 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
-import BrandLinkedinIcon from '@iconify-vue/tabler/brand-linkedin'
-import BrandLinkedinFilledIcon from '@iconify-vue/tabler/brand-linkedin-filled'
-import BrandGithubIcon from '@iconify-vue/tabler/brand-github'
-import BrandGithubFilledIcon from '@iconify-vue/tabler/brand-github-filled'
+import MailIcon from '@iconify-vue/tabler/mail'
+import MailFilledIcon from '@iconify-vue/tabler/mail-filled'
 
-type SocialLink = {
+type ContactLink = {
   href: string
   label: string
   outlineIcon: Component
   filledIcon: Component
 }
-const socialLinks: SocialLink[] = [
+const contactLinks: ContactLink[] = [
   {
-    href: 'https://github.com/felixgabel',
-    label: 'GitHub',
-    outlineIcon: BrandGithubIcon,
-    filledIcon: BrandGithubFilledIcon,
-  },
-  {
-    href: 'https://www.linkedin.com/in/fgabel/',
-    label: 'LinkedIn',
-    outlineIcon: BrandLinkedinIcon,
-    filledIcon: BrandLinkedinFilledIcon,
+    href: 'mailto:felix@example.com',
+    label: 'Email',
+    outlineIcon: MailIcon,
+    filledIcon: MailFilledIcon,
   },
 ]
 </script>
 
 <template>
-  <ul class="flex gap-2 lg:gap-3" aria-label="Soziale Medien">
-    <li v-for="socialLink in socialLinks" :key="socialLink.label">
+  <ul class="flex gap-2 lg:gap-3" aria-label="Kontaktmöglichkeiten">
+    <li v-for="contactLink in contactLinks" :key="contactLink.label">
       <a
         class="group relative block text-neutral-700 dark:text-neutral-300"
-        :href="socialLink.href"
+        :href="contactLink.href"
         target="_blank"
         rel="noreferrer noopener"
-        :aria-label="`${socialLink.label} (öffnet in neuem Tab)`"
-        :title="socialLink.label"
-        ><span class="sr-only">{{ socialLink.label }}</span
+        :aria-label="`${contactLink.label} (öffnet Mailprogramm)`"
+        :title="contactLink.label"
+        ><span class="sr-only">{{ contactLink.label }}</span
         ><span class="relative block size-7">
           <component
-            :is="socialLink.outlineIcon"
+            :is="contactLink.outlineIcon"
             class="absolute transition-opacity duration-200 group-[:is(:hover,:focus-visible)]:opacity-0 motion-reduce:transition-none"
           />
           <component
-            :is="socialLink.filledIcon"
+            :is="contactLink.filledIcon"
             class="absolute opacity-0 transition-opacity duration-200 group-[:is(:hover,:focus-visible)]:opacity-100 motion-reduce:transition-none"
           />
         </span>
