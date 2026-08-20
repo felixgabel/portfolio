@@ -34,7 +34,7 @@ const sectionLinks: SectionLink[] = [
             class="mr-4 h-px w-8 bg-neutral-500 transition-all group-[&:hover,&:focus-visible,&[data-active]]:w-16 group-[&:hover,&:focus-visible,&[data-active]]:bg-neutral-800 motion-reduce:transition-none dark:group-[&:hover,&:focus-visible,&[data-active]]:bg-neutral-200"
           ></span
           ><span
-            class="text-xs font-bold tracking-widest text-neutral-500 uppercase group-[&:hover,&:focus-visible,&[data-active]]:text-neutral-800 dark:group-[&:hover,&:focus-visible,&[data-active]]:text-neutral-200"
+            class="text-xs font-bold tracking-widest text-neutral-500 uppercase group-[&:hover,&:focus-visible,&[data-active]]:text-neutral-800 lg:bg-white/50 dark:bg-black/25 dark:group-[&:hover,&:focus-visible,&[data-active]]:text-neutral-200"
             >{{ sectionLink.label }}</span
           >
         </RouterLink>
