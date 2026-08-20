@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+</script>
+
 <template>
   <div class="flex flex-col gap-10 pb-16 text-base lg:py-24">
     <h1 class="text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">
@@ -49,7 +53,7 @@
       </address>
     </section>
     <hr class="mt-4 border-neutral-200 dark:border-neutral-700" />
-    <footer class="text-sm text-neutral-500">
+    <footer class="text-sm leading-relaxed text-neutral-500">
       <p>
         Generiert mit
         <a
@@ -58,6 +62,12 @@
         >
           impressumgenerator.com
         </a>
+      </p>
+      <p>
+        Zurück zur
+        <RouterLink to="/" class="font-medium text-neutral-600 dark:text-neutral-400"
+          >Startseite</RouterLink
+        >
       </p>
     </footer>
   </div>
