@@ -3,8 +3,10 @@ import type { Component } from 'vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import { useSectionHashSyncForProgrammaticScroll } from '../../composables/SectionHashSyncForProgrammaticScroll.ts'
 import { SectionIDs } from '../../enums/SectionIDs.ts'
+import SectionDivider from './sections/SectionDivider.vue'
 import AboutMeSection from './sections/AboutMeSection.vue'
 import ExperienceSection from './sections/ExperienceSection.vue'
+import FooterSection from './sections/FooterSection.vue'
 
 // --- SECTION HASH SYNC FOR PROGRAMMATIC SCROLL ---
 const breakpoints = useBreakpoints(breakpointsTailwind)
@@ -28,11 +30,10 @@ const homeSections: Section[] = [
       <section :id="homeSection.id" class="scroll-mt-24">
         <component :is="homeSection.component" />
       </section>
-      <hr
-        v-if="twoColumnLayout && indexOfHomeSection !== homeSections.length - 1"
-        class="h-px border-0 bg-radial from-neutral-200 to-transparent to-85% dark:from-neutral-800"
-        aria-hidden="true"
-      />
+      <SectionDivider v-if="twoColumnLayout && indexOfHomeSection !== homeSections.length - 1" />
     </template>
+
+    <SectionDivider />
+    <FooterSection />
   </main>
 </template>
