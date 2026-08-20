@@ -2,6 +2,7 @@
 import HeaderIntro from './header/HeaderIntro.vue'
 import HeaderNavigation from './header/HeaderNavigation.vue'
 import HeaderSocialLinks from './header/HeaderSocialLinks.vue'
+import HeaderContactLinks from './header/HeaderContactLinks.vue'
 </script>
 
 <template>
@@ -12,6 +13,9 @@ import HeaderSocialLinks from './header/HeaderSocialLinks.vue'
       <HeaderIntro />
       <HeaderNavigation />
     </div>
-    <HeaderSocialLinks />
+    <div class="mt-8 flex items-center gap-4">
+      <HeaderContactLinks />
+      <HeaderSocialLinks />
+    </div>
   </header>
 </template>
