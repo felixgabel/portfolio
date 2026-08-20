@@ -13,7 +13,7 @@ import HeaderContactLinks from './header/HeaderContactLinks.vue'
       <HeaderIntro />
       <HeaderNavigation />
     </div>
-    <div class="mt-8 flex items-center gap-4">
+    <div class="mt-8 flex items-center gap-2 lg:gap-3">
       <HeaderContactLinks />
       <HeaderSocialLinks />
     </div>
