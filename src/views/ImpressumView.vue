@@ -1,3 +1,5 @@
+<!-- Generiert mit impressumgenerator.com -->
+
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 </script>
@@ -53,16 +55,7 @@ import { RouterLink } from 'vue-router'
       </address>
     </section>
     <hr class="mt-4 border-neutral-200 dark:border-neutral-700" />
-    <footer class="text-sm leading-relaxed text-neutral-500">
-      <p>
-        Generiert mit
-        <a
-          href="https://impressumgenerator.com/"
-          class="font-medium text-neutral-600 dark:text-neutral-400"
-        >
-          impressumgenerator.com
-        </a>
-      </p>
+    <footer class="text-sm text-neutral-500">
       <p>
         Zurück zur
         <RouterLink to="/" class="font-medium text-neutral-600 dark:text-neutral-400"
