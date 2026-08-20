@@ -5,7 +5,9 @@ import SectionHeading from './SectionHeading.vue'
 
 <template>
   <SectionHeading>Über mich</SectionHeading>
-  <div class="flex flex-col gap-4">
+  <div
+    class="flex flex-col gap-4 to-transparent lg:bg-radial lg:from-white/50 lg:from-50% dark:lg:from-black/25"
+  >
     <p>
       Hallo! Ich bin Felix. Ein erfahrener Frontend-Entwickler mit einer Leidenschaft für die
       Entwicklung von <span class="italic">übersichtlichen</span>,
