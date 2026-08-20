@@ -14,8 +14,6 @@ The portfolio is written in German.
 
 ## Tech Stack
 
-I built the portfolio with:
-
 - [Vue 3](https://vuejs.org/) with the Composition API
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/)
