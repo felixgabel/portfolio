@@ -30,10 +30,10 @@ const homeSections: Section[] = [
       <section :id="homeSection.id" class="scroll-mt-24">
         <component :is="homeSection.component" />
       </section>
-      <SectionDivider v-if="twoColumnLayout && indexOfHomeSection !== homeSections.length - 1" />
+      <SectionDivider v-if="twoColumnLayout || indexOfHomeSection === homeSections.length - 1" />
+      <!-- the last divider should always be visible, on all screen sizes -->
     </template>
 
-    <SectionDivider />
     <FooterSection />
   </main>
 </template>
