@@ -11,7 +11,9 @@ import { RouterLink } from 'vue-router'
         class="font-medium text-neutral-600 dark:text-neutral-400"
         >Nachricht</a
       >. Alle rechtlichen Angaben und meine Kontaktdaten findest du im
-      <RouterLink to="/impressum" class="font-medium text-neutral-600 dark:text-neutral-400"
+      <RouterLink
+        :to="{ name: 'impressum' }"
+        class="font-medium text-neutral-600 dark:text-neutral-400"
         >Impressum</RouterLink
       >.
     </p>
