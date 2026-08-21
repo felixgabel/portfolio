@@ -19,7 +19,9 @@ const programmaticScrollStore = useProgrammaticScrollStore()
   >
     Frontend Entwickler
   </h2>
-  <p class="mt-4 max-w-sm leading-normal lg:bg-white/50 dark:lg:bg-black/25">
+  <p
+    class="mt-4 max-w-sm to-80% leading-normal lg:bg-linear-to-r lg:from-white/50 lg:to-transparent dark:lg:from-black/25"
+  >
     Entwicklung von modernen Web-Anwendungen mit Fokus auf Exzellenz und Schönheit.
   </p>
 </template>
