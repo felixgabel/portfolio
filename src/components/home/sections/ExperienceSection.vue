@@ -104,7 +104,7 @@ const projectsSortedByDateEnd = [...projects].sort(
 
   <a
     class="group/resume relative mt-12 inline-flex items-baseline leading-tight font-semibold text-neutral-900 dark:text-neutral-100"
-    href="/resume.pdf"
+    href="/lebenslauf-public.pdf"
     target="_blank"
     rel="noreferrer noopener"
     aria-label="Lebenslauf PDF (öffnet in einem neuen Tab)"
