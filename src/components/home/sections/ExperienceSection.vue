@@ -101,4 +101,25 @@ const projectsSortedByDateEnd = [...projects].sort(
       </div>
     </li>
   </ol>
+
+  <a
+    class="group/resume relative mt-12 inline-flex items-baseline leading-tight font-semibold text-neutral-900 dark:text-neutral-100"
+    href="/resume.pdf"
+    target="_blank"
+    rel="noreferrer noopener"
+    aria-label="Lebenslauf PDF (öffnet in einem neuen Tab)"
+  >
+    <div
+      class="absolute -inset-6 -z-1 hidden rounded-full opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_12px_0_rgb(255_255_255/.75)] drop-shadow-sm/18 backdrop-blur-[1.3px] transition-opacity duration-200 group-hover/resume:opacity-100 motion-reduce:transition-none lg:block dark:inset-shadow-[0_0_12px_0_rgb(60_60_60/.75)] dark:drop-shadow-white/80 dark:backdrop-brightness-130"
+      aria-hidden="true"
+    ></div>
+    <span class="absolute -inset-6 hidden rounded-full lg:block"
+      ><!-- this element has to have the same inset as the glass div --></span
+    >
+    <span class="inline-flex items-center gap-2"
+      >Lebenslauf PDF
+      <ArrowUpRightIcon
+        class="size-4 shrink-0 text-neutral-600 transition-transform duration-200 group-hover/resume:translate-x-0.75 group-hover/resume:-translate-y-0.75 group-focus-visible/resume:translate-x-0.75 group-focus-visible/resume:-translate-y-0.75 motion-reduce:transition-none dark:text-neutral-300/85"
+      ></ArrowUpRightIcon></span
+  ></a>
 </template>
