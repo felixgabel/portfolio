@@ -25,8 +25,8 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     title: 'ezSheets',
-    dateStart: new Date(2022, 0),
-    dateEnd: new Date(2025, 11),
+    dateStart: new Date(2022, 9),
+    dateEnd: new Date(2025, 3),
     description:
       'ezSheets ist eine Webanwendung, mit der man Musiksheets erstellen und verwalten kann. Setlisten können erstellt, bearbeitet und geteilt werden. Das Frontend wurde mit Vue 3, TypeScript und Vuetify entwickelt.',
     link: 'https://ezsheets.net',
