@@ -39,5 +39,8 @@ const props = withDefaults(
       class="absolute -inset-2 -z-1 rounded-full opacity-0 shadow-[0_0_5px_0_rgb(0_0_0/.075)] inset-shadow-[0_0_4px_0_rgb(255_255_255/.75)] drop-shadow-sm/40 backdrop-blur-[1.1px] transition-opacity duration-200 group-[:is(:hover,:focus-visible)]:opacity-100 motion-reduce:transition-none dark:inset-shadow-[0_0_6px_0_rgb(60_60_60/.75)] dark:drop-shadow-white/80 dark:backdrop-brightness-130"
       aria-hidden="true"
     ></div>
+    <span class="absolute -inset-2 hidden rounded-full lg:block"
+      ><!-- this element has to have the same inset as the glass div --></span
+    >
   </a>
 </template>
